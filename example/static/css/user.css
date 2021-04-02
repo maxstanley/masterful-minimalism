@@ -1,0 +1,33 @@
+.user-avatar {
+	width: 70%;
+}
+
+ul.user-info {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+
+	display: inline-block;
+	text-align: left;
+}
+
+.user-container {
+	align-items: center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.user-profile {
+	flex: 30%;
+}
+
+.user-description {
+	flex: 70%;
+}
+
+@media screen and (max-width: 1450px) {
+	.user-container {
+		flex-direction: row;	
+	}
+}

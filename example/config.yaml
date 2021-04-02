@@ -1,0 +1,11 @@
+---
+
+site:
+    name: Max's Blog
+    baseURL: "https://docs.maxstanley.uk"
+authors:
+    MaxS:
+        firstName: Max
+        lastName: Stanley
+        email: maxahstanley@outlook.com
+        twitter: "@maxahstanley"

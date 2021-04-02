@@ -1,0 +1,39 @@
+<div class="flex-container-column">
+	<p>Table of Contents</p>
+	<!-- h1 -->
+	<ul>
+	{{#each headings}}
+		<li><a href="#{{ this.IDLink }}">{{ this.Text }}</a></li>
+		<!-- h2 -->
+		<ul>
+		{{#each this.Children}}
+			<li><a href="#{{ this.IDLink }}">{{ this.Text }}</a></li>
+			<!-- h3 -->
+			<ul>
+			{{#each this.Children}}
+				<li><a href="#{{ this.IDLink }}">{{ this.Text }}</a></li>
+				<!-- h4 -->
+				<ul>
+				{{#each this.Children}}
+					<li><a href="#{{ this.IDLink }}">{{ this.Text }}</a></li>
+					<!-- h5 -->
+					<ul>
+					{{#each this.Children}}
+						<li><a href="#{{ this.IDLink }}">{{ this.Text }}</a></li>
+						<!-- h6 -->
+						<ul>
+						{{#each this.Children}}
+							<li><a href="#{{ this.IDLink }}">{{ this.Text }}</a></li>
+						{{/each}}
+						</ul>
+					{{/each}}
+					</ul>
+				{{/each}}
+				</ul>
+			{{/each}}
+			</ul>
+		{{/each}}
+		</ul>
+	{{/each}}
+	</ul>
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=100%, initial-scale=1.0">
+
+	<link rel="stylesheet" href="/css/global.css">
+	<link rel="stylesheet" href="/css/header.css">
+	<link rel="stylesheet" href="/css/user.css">
+
+	<title>{{ document.title }}</title>
+
+	<script type="application/ld+json">
+		{
+		"title": "{{ document.title }}",
+		"datePublished": "{{ document.publishDate }}"
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		{{{ global.Layouts.header.Template }}}
+		<div class="flex-container-row">
+			<div class="flex-container-left">
+				{{{ global.Layouts.user.Template }}}
+			</div>
+			<div class="flex-container-content">
+				<h1>{{ document.title }}</h1>
+
+				<p><i>{{ document.abstract }}</i></p>
+
+				{{{ content }}}
+			</div>
+			<div class="flex-container-right">
+				{{{ global.Layouts.toc.Template }}}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

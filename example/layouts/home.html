@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=100%, initial-scale=1.0">
+
+	<link rel="stylesheet" href="/css/global.css">
+	<link rel="stylesheet" href="/css/header.css">
+
+	<title>{{ document.title }}</title>
+</head>
+<body>
+	<div class="container">
+		{{{ global.Layouts.header.Template }}}
+		<div class="flex-container">
+			<div class="flex-container-left"></div>
+			<div class="flex-container-content">
+				<h1>Welcome to Max's Blog</h1>
+
+				<p>List of Pages:</p>
+				<ul>
+					{{#each pages}}
+					<li><a href="{{ RelativePath }}">{{ Options.PublishDate }}: {{ Options.Title }}</a></li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="flex-container-right"></div>
+		</div>
+	</div>
+</body>
+</html>
