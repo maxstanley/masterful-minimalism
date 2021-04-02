@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"flag"
+	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"path"
@@ -97,6 +100,25 @@ func main() {
 
 	for _, p := range pages {
 		l := layouts[p.Options.Layout]
-		p.CreateFile(configurationOptions, l)
+		err := p.CreateFile(configurationOptions, l)
+		if err != nil {
+			log.Fatalln(err.Error())
+		}
+	}
+
+	sitemapFile, err := os.Create(path.Join(*outputPath, "sitemap.xml"))
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
+
+	// Create sitemap file.
+	writer := bufio.NewWriter(sitemapFile)
+	configurationOptions.SiteMap.WriteTo(writer)
+	writer.Flush()
+
+	// Create robots.txt
+	sitemapURL := fmt.Sprintf("Sitemap: %s/sitemap.xml", configurationOptions.Site.BaseURL)
+	if err := ioutil.WriteFile(path.Join(*outputPath, "robots.txt"), []byte(sitemapURL), 0644); err != nil {
+		log.Fatalln(err.Error())
 	}
 }

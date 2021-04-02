@@ -2,7 +2,7 @@
 
 site:
     name: Max's Blog
-    baseURL: "https://docs.maxstanley.uk"
+    baseURL: "https://maxstanley.uk"
 authors:
     MaxS:
         firstName: Max

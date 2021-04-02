@@ -7,5 +7,6 @@ require (
 	github.com/andybalholm/cascadia v1.2.0 // indirect
 	github.com/aymerick/raymond v2.0.2+incompatible
 	github.com/russross/blackfriday/v2 v2.1.0
+	github.com/snabb/sitemap v1.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0
 )

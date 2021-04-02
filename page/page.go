@@ -1,15 +1,18 @@
 package page
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	handlebars "github.com/aymerick/raymond"
 	"github.com/russross/blackfriday/v2"
+	"github.com/snabb/sitemap"
 	"gopkg.in/yaml.v2"
 
 	"github.com/maxstanley/masterful-minimalism/configuration"
@@ -129,6 +132,20 @@ func (p *Page) CreateFile(configurationOptions *configuration.Configuration, l l
 	if err := ioutil.WriteFile(p.outputPath, []byte(outputFile), 0644); err != nil {
 		return err
 	}
+
+	publishDate, err := time.Parse(
+		time.RFC3339,
+		fmt.Sprintf("%sT00:00:00Z", p.Options.PublishDate),
+	)
+	if err != nil {
+		return err
+	}
+	utc := publishDate.UTC()
+
+	configurationOptions.SiteMap.Add(&sitemap.URL{
+		Loc:     fmt.Sprintf("%s%s", configurationOptions.Site.BaseURL, p.outputPath),
+		LastMod: &utc,
+	})
 
 	return nil
 }

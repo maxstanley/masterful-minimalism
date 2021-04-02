@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 
 	"github.com/maxstanley/masterful-minimalism/layout"
+	"github.com/snabb/sitemap"
 	"gopkg.in/yaml.v2"
 )
 
@@ -19,6 +20,8 @@ type Configuration struct {
 	OutputPath  string
 
 	Layouts map[string]layout.Layout
+
+	SiteMap *sitemap.SitemapIndex
 
 	// Other contains custom configuration options.
 	Other map[string]interface{} `yaml:"-"`
@@ -41,6 +44,8 @@ func NewFromFile(configurationPath string) (configuration *Configuration, err er
 	if err = yaml.Unmarshal(file, configuration.Other); err != nil {
 		return
 	}
+
+	configuration.SiteMap = sitemap.NewSitemapIndex()
 
 	return
 }
